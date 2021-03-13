@@ -1,6 +1,7 @@
 import express from "express";
 import { CommonRoutesConfig } from "../common/common.routes.config";
 import { ProductsController } from "./controllers/products.controller";
+import { ProductsMiddleware } from "./middlewares/products.middleware";
 
 export class ProductsRoutes implements CommonRoutesConfig {
   app: express.Application;
@@ -14,9 +15,12 @@ export class ProductsRoutes implements CommonRoutesConfig {
 
   configureRoutes(): void {
     const productsController = new ProductsController();
+    const productsMiddleware = new ProductsMiddleware();
 
     this.app.get("/products", [
-      productsController.listProducts
+      productsMiddleware.validateRequiredQueryParams,
+      productsMiddleware.reproduceKeyword,
+      productsController.filterProducts,
     ]);
   }
 
