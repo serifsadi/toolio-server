@@ -1,0 +1,21 @@
+{
+  "name": "toolio-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Serif Sadi Senkule",
+  "license": "MIT",
+  "scripts": {
+    "tsc": "tsc",
+    "start": "npm run tsc && node ./dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.2",
+    "source-map-support": "^0.5.16",
+    "tslint": "^6.0.0",
+    "typescript": "^3.7.5"
+  }
+}
