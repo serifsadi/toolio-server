@@ -1,4 +1,4 @@
-import { CRUD } from "../../common/crud.interface";
+import { CRUD } from "../common/crud.interface";
 import { GenericInMemoryDao } from "../daos/in.memory.dao";
 
 export class ProductsService implements CRUD {

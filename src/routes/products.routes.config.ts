@@ -1,7 +1,7 @@
 import express from "express";
 import { CommonRoutesConfig } from "../common/common.routes.config";
-import { ProductsController } from "./controllers/products.controller";
-import { ProductsMiddleware } from "./middlewares/products.middleware";
+import { ProductsController } from "../controllers/products.controller";
+import { ProductsMiddleware } from "../middlewares/products.middleware";
 
 export class ProductsRoutes implements CommonRoutesConfig {
   app: express.Application;

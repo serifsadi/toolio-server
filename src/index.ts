@@ -1,7 +1,7 @@
 import express from "express";
 import * as http from "http";
 import { CommonRoutesConfig } from "./common/common.routes.config";
-import { ProductsRoutes } from "./products/products.routes.config";
+import { ProductsRoutes } from "./routes/products.routes.config";
 
 const app: express.Application = express();
 const server: http.Server = http.createServer(app);
@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
 
 server.listen(port, () => {
   console.log(`Server running at port ${port}`);
-  routes.forEach((route:CommonRoutesConfig) => {
-    console.log(`Routes configured for ${route.getName()}`)
+  routes.forEach((route: CommonRoutesConfig) => {
+    console.log(`Routes configured for ${route.getName()}`);
   });
 });
