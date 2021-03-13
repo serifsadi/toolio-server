@@ -1,5 +1,6 @@
 import express from "express";
 import { CommonRoutesConfig } from "../common/common.routes.config";
+import { ProductsController } from "./controllers/products.controller";
 
 export class ProductsRoutes implements CommonRoutesConfig {
   app: express.Application;
@@ -12,9 +13,11 @@ export class ProductsRoutes implements CommonRoutesConfig {
   }
 
   configureRoutes(): void {
-    this.app.get("/products", (req: express.Request, res: express.Response) => {
-      res.status(200).send("List of products");
-    });
+    const productsController = new ProductsController();
+
+    this.app.get("/products", [
+      productsController.listProducts
+    ]);
   }
 
   getName(): string {
