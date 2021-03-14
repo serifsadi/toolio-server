@@ -11,7 +11,9 @@ export class ProductsController {
 
     if (req.query.keyword) {
       const keyword = req.query.keyword.toString();
-      products = filterService.filter(products, "title", keyword);
+      if (products) {
+        products = filterService.filter(products, "title", keyword);
+      }
     }
 
     res.status(200).send(products);

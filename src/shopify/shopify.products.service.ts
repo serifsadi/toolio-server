@@ -1,24 +1,19 @@
 import request from "request";
+import { shopifyApiVersion, shopifyCredentials } from "../config";
 
-const API_CONF = {
-  STORE_DOMAIN: "c873d395f841c64634c5330ce9118c9d",
-  STORE_PASSWORD: "5dcf9317c6ff86ea61d21b0d4dd0a1a8",
-  STORE_NAME: "toolio-retail",
-  VERSION: "2021-01",
-  ADDRESS: `https://{shop}.myshopify.com/admin/api/{version}`,
-};
-
-// https://c873d395f841c64634c5330ce9118c9d:5dcf9317c6ff86ea61d21b0d4dd0a1a8@toolio-retail.myshopify.com/admin/api/2021-01/products.json
+const API_ENDPOINT_TEMPLATE = `https://{shop}.myshopify.com/admin/api/{version}`;
 
 export class ShopifyProductService {
   private static instance: ShopifyProductService;
   private endpoint: string;
 
   constructor() {
-    const shop = `${API_CONF.STORE_DOMAIN}:${API_CONF.STORE_PASSWORD}@${API_CONF.STORE_NAME}`;
-    this.endpoint = API_CONF.ADDRESS.replace("{shop}", shop).replace(
+    const shop = `${shopifyCredentials.storeDomain}:${shopifyCredentials.storePassword}@${shopifyCredentials.storeName}`;
+    const version = shopifyApiVersion || "2021-01";
+
+    this.endpoint = API_ENDPOINT_TEMPLATE.replace("{shop}", shop).replace(
       "{version}",
-      API_CONF.VERSION
+      version
     );
   }
 
@@ -39,6 +34,7 @@ export class ShopifyProductService {
     return new Promise((resolve, reject) => {
       request(reqUrl, { json: true }, (err, res, body) => {
         if (err) {
+          console.log("err", err);
           reject(err);
         }
         resolve(body.products);

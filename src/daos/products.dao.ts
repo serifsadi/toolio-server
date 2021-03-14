@@ -14,8 +14,12 @@ export class ProductsDao {
 
   async getProducts(limit: number, fields: string[]) {
     const shopifyProductService = ShopifyProductService.getInstance();
-    const products = await shopifyProductService.fetchProducts(limit, fields);
-    return products;
+    try {
+      const products = await shopifyProductService.fetchProducts(limit, fields);
+      return products;
+    } catch (error) {
+      return error;
+    }
   }
 
   getProductById(productId: string) {}
