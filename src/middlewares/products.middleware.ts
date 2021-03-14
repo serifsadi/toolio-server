@@ -30,12 +30,7 @@ export class ProductsMiddleware {
     next: express.NextFunction
   ) {
     const keyword = req.query.keyword;
-    const searchQueries = [];
-    searchQueries.push(keyword?.toString().toLowerCase());
-    searchQueries.push(keyword?.toString().toUpperCase());
-    req.body = {
-      searchQueries,
-    };
+    req.query.keyword = keyword?.toString().toLowerCase();
     next();
   }
 }
