@@ -1,5 +1,6 @@
 import { CRUD } from "../common/crud.interface";
 import { GenericInMemoryDao } from "../daos/in.memory.dao";
+import { ProductsDao } from "../daos/products.dao";
 
 export class ProductsService implements CRUD {
   private static instance: ProductsService;
@@ -24,8 +25,9 @@ export class ProductsService implements CRUD {
     return this.dao.removeProductById(resourceId);
   }
 
-  list(limit: number, page: number) {
-    return this.dao.getProducts();
+  list(limit: number, fields: string[], page: number) {
+    // return this.dao.getProducts();
+    return ProductsDao.getInstance().getProducts(limit, fields);
   }
 
   patchById(resource: any) {
