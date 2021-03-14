@@ -6,7 +6,7 @@ import { ProductsRoutes } from "./routes/products.routes.config";
 const app: express.Application = express();
 const server: http.Server = http.createServer(app);
 const port = 3000;
-const routes: any = [];
+const routes: CommonRoutesConfig[] = [];
 routes.push(new ProductsRoutes(app));
 
 app.get("/", (req, res) => {
