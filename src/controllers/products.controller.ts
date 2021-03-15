@@ -7,7 +7,7 @@ export class ProductsController {
     const productsService = ProductsService.getInstance();
     const filterService = FilterService.getInstance();
 
-    let products: any = await productsService.list(250, ["id", "title"], 0);
+    let products: any = await productsService.list(250, 0, ["id", "title"]);
 
     if (req.query.keyword) {
       const keyword = req.query.keyword.toString();

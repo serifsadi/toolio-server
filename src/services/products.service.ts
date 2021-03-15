@@ -25,9 +25,9 @@ export class ProductsService implements CRUD {
     return this.dao.removeProductById(resourceId);
   }
 
-  list(limit: number, fields: string[], page: number) {
+  list(limit: number, page: number, fields: string[]) {
     // return this.dao.getProducts();
-    return ProductsDao.getInstance().getProducts(limit, fields);
+    return ProductsDao.getInstance().getProducts(limit, page, fields);
   }
 
   patchById(resource: any) {
