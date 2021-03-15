@@ -2,10 +2,6 @@ export class GenericInMemoryDao {
   private static instance: GenericInMemoryDao;
   products: any = [];
 
-  constructor() {
-    console.log("Created new instance of GenericInMemoryDao");
-  }
-
   static getInstance(): GenericInMemoryDao {
     if (!GenericInMemoryDao.instance) {
       GenericInMemoryDao.instance = new GenericInMemoryDao();

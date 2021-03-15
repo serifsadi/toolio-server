@@ -7,7 +7,7 @@
   "scripts": {
     "tsc": "tsc",
     "start": "yarn run tsc && node ./dist/index.js",
-    "test-dev": "nodemon --watch . --ext ts --exec \"mocha -r ts-node/register test/**/*.test.ts\"",
+    "test:dev": "nodemon --watch . --ext ts --exec \"mocha --timeout 10000 -r ts-node/register test/**/*.test.ts\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
